@@ -1,0 +1,420 @@
+/* =================================
+  Element Styles
+==================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 1em/1.5 'Roboto', sans-serif;
+  color: #222;
+  background: #f6f7f7;
+  padding-top: 145px;
+  padding-bottom: 3em;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input {
+  font-size: 1.12em;
+  height: 46px;
+  padding-bottom: 1em;
+  padding-left: 0;
+  background: none;
+  border: none;
+  outline: 0;
+  border-bottom: 4px solid #e4e4e4;
+  transition: border-color .4s;
+}
+
+input ~ input {
+  margin-left: 5px;
+}
+
+input:focus {
+  border-color: #c1c1c1;
+}
+
+button {
+  width: 40px;
+  height: 35px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  outline: 0;
+  position: relative;
+  z-index: 2000;
+}
+
+/* =================================
+  Page Components
+==================================== */
+
+.main-title {
+  font-size: 1.4em;
+  line-height: 80px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.main-title:before {
+  font-family: 'Material Icons';
+  content: "\E030";
+  vertical-align: middle;
+  font-size: 1.5em;
+}
+
+.search-form input:last-of-type {
+  margin-right: -40px;
+}
+.search-form input:nth-of-type(1) {
+  width: 65%;
+}
+.search-form input:nth-of-type(2) {
+  width: 35%;
+}
+.search-form input:only-of-type {
+  width: 100%;
+  padding-right: 35px;
+}
+
+.search-button {
+  float: right;
+  margin-right: -10px;
+}
+
+.icn-search {
+  font-weight: 700;
+}
+
+.icon-help,
+.icn-album {
+  font-size: 6em;
+  margin-bottom: 12px;
+  color: #dfdfdf;
+  display: block;
+}
+
+/* album LIST COMPONENTS -------- */
+
+.no-albums,
+.desc  {
+  color: #b0b0b0;
+  height: 140px;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.album-list li {
+  margin: 1.925em 0 0;
+}
+
+.album-list a {
+  display: block;
+  margin: auto;
+}
+
+.album-title {
+  display: block;
+  font-size: 1.1em;
+  line-height: 1.2;
+  color: #000;
+  font-weight: 500;
+}
+
+.album-year {
+  color: #9d9d9d;
+}
+
+.album-wrap {
+  background-color: #fff;
+  margin-bottom: .8em;
+  position: relative;
+}
+
+.-placeholder {
+  color: #dadada;
+  font-size: 5em;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+/* =================================
+  Layout Styles
+==================================== */
+
+.inner,
+.main-content {
+  width: 90%;
+  max-width: 1025px;
+  margin: auto;
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  min-height: 80px;
+  z-index: 1000;
+}
+
+
+
+
+
+/* =================================
+  Helper Classes
+==================================== */
+
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.is-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* =================================
+  Media Queries
+==================================== */
+
+@media (min-width: 0) and (max-width: 549px) {
+  .album-list li {
+    text-align: center;
+  }
+}
+
+@media (min-width: 550px) {
+
+  .album-list li {
+    float: left;
+    width: 50%;
+  }
+
+
+  .album-list .desc {
+    width: 100%;
+    float: none;
+  }
+
+  .album-wrap {
+    height: 250px;
+    border: 1px solid white;
+    overflow: hidden;
+  }
+
+  .album-art {
+    width: 100%;
+    min-height: 100%;
+    -webkit-transition: -webkit-transform .4s ease-out;
+    transition: transform .4s ease-out;
+    padding-left: 10px;
+  }
+
+  .album-wrap:hover .album-art {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+ .album-title {
+    padding-right: 1.25em;
+ }
+
+}
+
+@media (min-width: 769px) {
+  body {
+    padding-top: 115px;
+  }
+
+  .main-title {
+    float: left;
+  }
+
+  .search-form {
+    width: 422px;
+    float: right;
+    margin-top: 34px;
+  }
+
+  .album-list li {
+    width: 33.333333333%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 999px) {
+  .album-list li:nth-of-type(3n+1) {
+    clear: left;
+  }
+}
+
+@media (min-width: 1000px) {
+  .album-list li {
+    width: 25%;
+  }
+
+  .album-list li:nth-of-type(4n+1) {
+    clear: left;
+  }
+}
+
+/*new styleee*/
+
+.layer {
+  display: block;
+  position: absolute;
+  top: 15%;
+  left:0%;
+  width: 100%;
+  background: #392F2F;
+  height: 25%;
+}
+
+.album-image {
+    position: absolute;
+    top: 50%;
+    left: 12%;
+    width: 25%;
+    height: 200%;
+    border: 10px solid white;
+}
+
+.album-name {
+  position: absolute;
+  top: 28%;
+  left: 41%;
+  color: white;
+  font-size: 32px;
+  margin:0px;
+}
+
+.artist-title {
+  position: absolute;
+  padding-top: 10px;
+  top: 34%;
+  right:32%;
+  width: 27%;
+  z-index: 500;
+  color: white;
+  font-size: 15px;
+  margin:0px;
+}
+
+.boxes {
+  padding-left: 10px;
+
+}
+.album-title,
+.album-artist {
+    margin-left: 25px;
+}
+
+.img-detail {
+    margin-left: 250px;
+    width: 45px;
+    height: 45px;
+}
+
+.img-detail:hover {
+  -webkit-transform: scale(1.1);
+  transition: .25s ease-out;
+  transform: scale(1.2);
+}
+
+.track-list {
+  position: absolute;
+  text-align: left;
+  right: 18%;
+  top: 45%;
+  width:500px;
+  display: block;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.track-list li {
+  margin:5px;
+}
+
+#back-main {
+  color:white;
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  width: 150px;
+  font-size: 16px;
+
+}
+
+/*overlay and button of spotify*/
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #FFF;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+.album-wrap:hover .overlay {
+  display: block;
+  background: rgba(0, 0, 0, .3);
+}
+
+.spotify-button {
+    position: absolute;
+    width: 180px;
+    left: 35px;
+    top: 50px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+.spotify-button a {
+  position: absolute;
+  left: 35px;
+  top: 65px;
+  width: 100%;
+  padding: 12px 48px;
+  text-align: center;
+  color: white;
+  z-index: 1000;
+  float: left;
+}
+.album-wrap:hover .spotify-button {
+  opacity: 1;
+}
