@@ -136,6 +136,7 @@ button {
 
 .album-year {
   color: #9d9d9d;
+  margin-left: 0;
 }
 
 .album-wrap {
@@ -304,17 +305,19 @@ button {
     top: 50%;
     left: 12%;
     width: 25%;
-    height: 200%;
+    height: 120%;
     border: 10px solid white;
 }
 
 .album-name {
-  position: absolute;
+  display: block;
+  position:absolute;
   top: 28%;
   left: 41%;
   color: white;
   font-size: 32px;
   margin:0px;
+  line-height: 1;
 }
 
 .artist-title {
@@ -327,6 +330,7 @@ button {
   color: white;
   font-size: 15px;
   margin:0px;
+  margin-left: 25px;
 }
 
 .boxes {
@@ -360,6 +364,7 @@ button {
   font-size: 15px;
   font-style: italic;
   font-weight: bold;
+  padding-bottom: 200px;
 }
 
 .track-list li {
@@ -397,11 +402,12 @@ button {
 .spotify-button {
     position: absolute;
     width: 180px;
-    left: 35px;
+    left: 28px;
     top: 50px;
     text-align: center;
     opacity: 0;
-    transition: opacity .35s ease;
+    transition: opacity .5s ease;
+    z-index: 50;
 }
 
 .spotify-button a {

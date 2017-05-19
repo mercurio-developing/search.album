@@ -1,32 +1,32 @@
-// i declare all global variables
+// I declare all global variables
 var search;
 var albumId;
 
-$("#submit").click(function(){ //when the button the search is pressed
-      search = $('#search').val(); // i give input value to search
-      searchAlbum(); //and run the function whit a search the album
-      event.preventDefault();//when is submit this prevent the lost all the data
+$("#submit").click(function(){ //when the search button is pressed
+      search = $('#search').val(); // I give the input value to search
+      searchAlbum(); //the function runs
+      event.preventDefault();//prevents data from being lost when submitted
 
     });
 
 
 var searchAlbum = function(){
-      $("#detail").remove(); //remove the detail of the album
-      $('#albums li:first-child').hide(); // hide first-child child how have the message of search album
-      $('.no-albums').remove();//i delete the message of dont found album
-      $('.results').remove();// and remove the results for begin another search
+      $("#detail").remove(); //remove the album detail
+      $('#albums li:first-child').hide(); // hide the first-child
+      $('.no-albums').remove();//I delete the "no album found" message
+      $('.results').remove();// and remove the results to begin another search
       search = $('#search').val();
 
       $.ajax({
-              url: "https://api.spotify.com/v1/search?q=album:"+ search +"&type=album", //i make request of this album to spotify
+              url: "https://api.spotify.com/v1/search?q=album:"+ search +"&type=album", //I request this album from spotify
               method: 'GET',
               dataType: 'json',
-              success: function (data) {  //when the request is success
+              success: function (data) {  //when the request is successful
 
-                      var albumHTML;            // i begin to declare all variables with the diferents routes of the values in the json file,
+                      var albumHTML;            // I begin to declare all variables with different value routes in the json file,
                       var album = data.albums.items;
 
-                    $.each(album,function (index, value) { // and the loop  for give the values to HTML
+                    $.each(album,function (index, value) { // and the loop gives the values to HTML
                       var albumName = value.name;
                       var albumImage = value.images[0].url;
                       var artistName = value.artists[0].name;
@@ -36,17 +36,17 @@ var searchAlbum = function(){
                       albumHTML +=  '<div class="album-title">' + albumName + '</div><div class="album-artist">' + artistName + '</div>';
                       albumHTML +=  '<img class="img-detail" alt="'+ albumID +'" src="images/detail.svg"></div></li>';
 
-                      $('#albums').append(albumHTML); //i append HTML
+                      $('#albums').append(albumHTML); //I append HTML
 
                       });
 
-                      if ($('#albums li').length > 1) { //if the search not give any result i put the message
+                      if ($('#albums li').length > 1) { //I put the message if the search has no results
                       }  else {
                         $('#albums').append("<li class='no-albums desc'><i class='material-icons icon-help'>help_outline</i>No albums found that match: " + search + ".</li>");
                       }
 
                       // aqui img-detai
-                      $('.img-detail').click(function( event ) { //if the user click in the botton for more detail we run the other request by ID
+                      $('.img-detail').click(function( event ) { //if the user clicks the botton for more detail we run the other request by ID
                               detailAlbum();
 
                             });
@@ -55,26 +55,26 @@ var searchAlbum = function(){
                   };
 
                       var detailAlbum = function(){
-                      $('#albums li').hide();         // i hide the results of the search
-                      targetID = ($(event.target).attr('alt')); //i give to albumID in ALT ATTR in the image to targetID
+                      $('#albums li').hide();         // I hide the results of the search
+                      targetID = ($(event.target).attr('alt')); //I give albumID to ALT ATTR in the image of targetID
                       $.ajax({
-                              url: "https://api.spotify.com/v1/albums/"+ targetID +"", //with the ID i make request of this specific album
+                              url: "https://api.spotify.com/v1/albums/"+ targetID +"", //with the ID I request this specific album
                               method: 'GET',
                               dataType: 'json',
-                              success: function (detail) {   //i declare again diferents values of json file and i use in the HTML
+                              success: function (detail) {   //I declare again diferents values of json file and use these in the HTML
                                       var albumName = detail.name;
                                       var albumImage = detail.images[0].url;
                                       var artistName = detail.artists[0].name;
                                       var year = detail.release_date;
                                           year =year.slice(0, 4);
                                       var detailHTML ='<div id="detail"><div class="layer"><button id="back-main">< Search results</button><img class="album-image" src="' + albumImage + '"></div>';
-                                          detailHTML  +='<h4 class="album-name">'+ albumName +  '<span class="year"> (' + year + ') </span></h4><h5 class="artist-title">'+ artistName +'</h5><ul class="track-list">Track List</ul></div>';
+                                          detailHTML  +='<h4 class="album-name">'+ albumName +  '<span class="year"> (' + year + ') </span><h5 class="artist-title">'+ artistName +'</h5></h4><ul class="track-list">Track List</ul></div>';
                                           $('.main-content').append(detailHTML);
                                               $.each(detail.tracks.items,function (index, value) { // loop for add all tracks to HTML
                                               $('.track-list').append('<li class="track">'+ index +' . '+ value.name + '</li>');
                                               });
 
-                                              $('#back-main').click(function(){ //if the button of search result is pressed the user come back to the main search
+                                              $('#back-main').click(function(){ //if the user presses "search results" button they return
                                                 searchAlbum();
                                               });
                                             }
